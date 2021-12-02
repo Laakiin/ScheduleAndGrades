@@ -1,5 +1,6 @@
 package com.anakinmrq.scheduleandgradesiutb;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import java.util.stream.Collectors;
 
 public class Settings extends AppCompatActivity {
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -43,21 +45,29 @@ public class Settings extends AppCompatActivity {
             case R.id.menu_schedule:
                 Intent scheduleIntent = new Intent(this, Schedule.class);
                 Settings.this.startActivity(scheduleIntent);
+                CloseApp();
                 return true;
             case R.id.menu_grades:
                 Intent gradesIntent = new Intent(this, Grades.class);
                 Settings.this.startActivity(gradesIntent);
+                CloseApp();
                 return true;
             case R.id.menu_settings:
                 return true;
             case R.id.menu_infos:
                 Intent infosIntent = new Intent(this, Infos.class);
                 Settings.this.startActivity(infosIntent);
+                CloseApp();
+                return true;
+            case R.id.menu_home:
+                CloseApp();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public void exitIntent(View v){finishAndRemoveTask();}
 
     public String fName;
 
@@ -65,6 +75,12 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
+        activity=this;
+    }
+    static public Activity activity;
+
+    public static void CloseApp(){
+        activity.finish();
     }
 
     public void saveInfo(View v){
@@ -76,9 +92,7 @@ public class Settings extends AppCompatActivity {
         createNumEtuFile(NumEtu);
     }
 
-    public void exitIntent(View v){
-        finishAndRemoveTask();
-    }
+
 
 
 

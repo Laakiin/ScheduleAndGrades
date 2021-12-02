@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -36,14 +37,19 @@ public class MainActivity extends AppCompatActivity {
                 Intent infosIntent = new Intent(this, Infos.class);
                 MainActivity.this.startActivity(infosIntent);
                 return true;
+            case R.id.menu_home:
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
     }
 }

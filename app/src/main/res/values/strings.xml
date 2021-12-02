@@ -8,8 +8,10 @@
     <string name="schedule">Schedule</string>
     <string name="settings">Settings</string>
     <string name="infos">Infos</string>
-    <string name="infos_string1">Application créée par Anakin MARQUES</string>
-    <string name="infos_string2">Pour rapporter des bugs, le faire à cette addresse mail: </string>
-    <string name="infos_string3">anakinmrq@gmail.com</string>
+    <string name="infos_string1">App created by Anakin MARQUES</string>
+    <string name="infos_string3" translatable="false">anakinmrq@gmail.com</string>
+    <string name="infos_string2">If you want to report any bug, do it to this email address:</string>
+    <string name="iutb_link" translatable="false">www.iutbeziers.fr</string>
+    <string name="home">Home</string>
 
 </resources>

@@ -3,23 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_settings"
-        android:orderInCategory="100"
+        android:orderInCategory="1"
         android:title="@string/settings"
         app:showAsAction="never" />
     <item
         android:id="@+id/menu_infos"
-        android:orderInCategory="100"
+        android:orderInCategory="2"
         android:title="@string/infos"
         app:showAsAction="never" />
     <item
+        android:id="@+id/menu_home"
+        android:title="@string/home"
+        android:orderInCategory="3"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_home"/>
+    <item
         android:id="@+id/menu_schedule"
-        android:orderInCategory="100"
+        android:orderInCategory="4"
         android:title="@string/schedule"
         android:icon="@drawable/ic_schedule"
         app:showAsAction="always" />
     <item
         android:id="@+id/menu_grades"
-        android:orderInCategory="100"
+        android:orderInCategory="5"
         android:title="@string/grades"
         android:icon="@drawable/ic_grades"
         app:showAsAction="always" />

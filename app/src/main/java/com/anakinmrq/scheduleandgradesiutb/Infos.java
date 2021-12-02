@@ -1,5 +1,8 @@
 package com.anakinmrq.scheduleandgradesiutb;
 
+import static com.anakinmrq.scheduleandgradesiutb.Settings.CloseApp;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,16 +24,22 @@ public class Infos extends AppCompatActivity {
             case R.id.menu_schedule:
                 Intent scheduleIntent = new Intent(this, Schedule.class);
                 Infos.this.startActivity(scheduleIntent);
+                CloseApp();
                 return true;
             case R.id.menu_grades:
                 Intent gradesIntent = new Intent(this, Grades.class);
                 Infos.this.startActivity(gradesIntent);
+                CloseApp();
                 return true;
             case R.id.menu_settings:
                 Intent settingsIntent = new Intent(this, Settings.class);
                 Infos.this.startActivity(settingsIntent);
+                CloseApp();
                 return true;
             case R.id.menu_infos:
+                return true;
+            case R.id.menu_home:
+                CloseApp();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -40,5 +49,7 @@ public class Infos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infos);
 
+        activity=this;
     }
+    static public Activity activity;
 }

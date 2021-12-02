@@ -1,5 +1,8 @@
 package com.anakinmrq.scheduleandgradesiutb;
 
+import static com.anakinmrq.scheduleandgradesiutb.Settings.CloseApp;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,14 +34,20 @@ public class Schedule extends AppCompatActivity {
             case R.id.menu_grades:
                 Intent gradesIntent = new Intent(this, Grades.class);
                 Schedule.this.startActivity(gradesIntent);
+                CloseApp();
                 return true;
             case R.id.menu_settings:
                 Intent settingsIntent = new Intent(this, Settings.class);
                 Schedule.this.startActivity(settingsIntent);
+                CloseApp();
                 return true;
             case R.id.menu_infos:
                 Intent infosIntent = new Intent(this, Infos.class);
                 Schedule.this.startActivity(infosIntent);
+                CloseApp();
+                return true;
+            case R.id.menu_home:
+                CloseApp();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -64,14 +73,15 @@ public class Schedule extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.schedule);
         WebView myWebView = (WebView) findViewById(R.id.webview);
-
-
         myWebView.getSettings().setBuiltInZoomControls(true);
         myWebView.getSettings().setSupportZoom(true);
+        myWebView.getSettings().setDisplayZoomControls(false);
         myWebView.getSettings().setJavaScriptEnabled(true);
         String URL =  readLine(0,"url.txt");
         myWebView.loadUrl(URL);
 
 
+        activity=this;
     }
+    static public Activity activity;
 }

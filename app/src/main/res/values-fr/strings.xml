@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EDT et Notes</string>
+    <string name="save">Sauvegarder</string>
+    <string name="exit">Quiiter</string>
+    <string name="NumEtu">Numéro Étudiant</string>
+    <string name="URL">Lien de l\'EDT</string>
+    <string name="grades">Notes</string>
+    <string name="schedule">Emploi du Temps</string>
+    <string name="settings">Paramêtres</string>
+    <string name="infos">Infos</string>
+    <string name="infos_string1">Application créée par Anakin MARQUES</string>
+    <string name="infos_string2">"Pour rapporter des bugs, le faire à cette addresse mail: "</string>
+    <string name="home">Accueil</string>
+</resources>
