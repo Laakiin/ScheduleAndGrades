@@ -102,8 +102,6 @@ public class Grades extends AppCompatActivity {
                     b = false;
                 }
                 if (b == true) {
-                    String newUA= "Mozilla/5.0 (X11; Linux x86_64; rv:94.0) Gecko/20100101 Firefox/94.0";
-                    myWebView.getSettings().setUserAgentString(newUA);
                     myWebView.getSettings().setBuiltInZoomControls(true);
                     myWebView.getSettings().setSupportZoom(true);
                     myWebView.getSettings().setDisplayZoomControls(false);

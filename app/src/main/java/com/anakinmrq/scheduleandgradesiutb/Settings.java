@@ -1,6 +1,7 @@
 package com.anakinmrq.scheduleandgradesiutb;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import java.io.BufferedReader;
@@ -92,9 +94,50 @@ public class Settings extends AppCompatActivity {
         createNumEtuFile(NumEtu);
     }
 
+    public void displayNumEtu(View v){
 
+        String numetu = readLine(0,"numetu.txt");
 
+        Context context=getApplicationContext();
+        int duration= Toast.LENGTH_SHORT;
+        Toast t= Toast.makeText(context,numetu,duration);
+        t.show();
 
+    }
+
+    public void displayURL(View v){
+
+        String URL = readLine(0,"url.txt");
+
+        Context context=getApplicationContext();
+        int duration=Toast.LENGTH_SHORT;
+        Toast t= Toast.makeText(context,URL,duration);
+        t.show();
+
+    }
+
+    public String readLine(int line, String fName) {
+        FileReader tempFileReader = null;
+        BufferedReader tempBufferedReader = null;
+        try {
+            tempFileReader = new FileReader(getFilesDir().getAbsolutePath() + "/" + fName);
+            tempBufferedReader = new BufferedReader(tempFileReader);
+        } catch (Exception e) {
+        }
+        String returnStr = "ERROR";
+        for (int i = 0; i < line - 1; i++) {
+            try {
+                tempBufferedReader.readLine();
+            } catch (Exception e) {
+            }
+        }
+        try {
+            returnStr = tempBufferedReader.readLine();
+        } catch (Exception e) {
+        }
+
+        return returnStr;
+    }
 
 
     public void createUrlFile(String URL) {

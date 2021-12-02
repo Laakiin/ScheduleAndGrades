@@ -7,44 +7,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_schedule:
-                Intent scheduleIntent = new Intent(this, Schedule.class);
-                MainActivity.this.startActivity(scheduleIntent);
-                return true;
-            case R.id.menu_grades:
-                Intent gradesIntent = new Intent(this, Grades.class);
-                MainActivity.this.startActivity(gradesIntent);
-                return true;
-            case R.id.menu_settings:
-                Intent settingsIntent = new Intent(this, Settings.class);
-                MainActivity.this.startActivity(settingsIntent);
-                return true;
-            case R.id.menu_infos:
-                Intent infosIntent = new Intent(this, Infos.class);
-                MainActivity.this.startActivity(infosIntent);
-                return true;
-            case R.id.menu_home:
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,4 +18,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
     }
+
+    public void schedule(View v){
+        Intent scheduleIntent = new Intent(this, Schedule.class);
+        this.startActivity(scheduleIntent);
+    }
+    public void settings(View v){
+        Intent scheduleIntent = new Intent(this, Settings.class);
+        this.startActivity(scheduleIntent);
+    }
+    public void infos(View v){
+        Intent scheduleIntent = new Intent(this, Infos.class);
+        this.startActivity(scheduleIntent);
+    }
+    public void grades(View v){
+        Intent scheduleIntent = new Intent(this, Grades.class);
+        this.startActivity(scheduleIntent);
+    }
+    public void siteIUTB(View v){
+        Intent scheduleIntent = new Intent(this, iutbSite.class);
+        this.startActivity(scheduleIntent);
+    }
+
 }
