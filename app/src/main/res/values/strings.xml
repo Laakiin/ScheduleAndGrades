@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Schedule And Grades</string>
+    <string name="save">Save</string>
+    <string name="exit">Exit</string>
+    <string name="NumEtu">Student ID</string>
+    <string name="URL">Schedule URL</string>
+    <string name="grades">Grades</string>
+    <string name="schedule">Schedule</string>
+    <string name="settings">Settings</string>
+    <string name="infos">Infos</string>
+    <string name="infos_string1">Application créée par Anakin MARQUES</string>
+    <string name="infos_string2">Pour rapporter des bugs, le faire à cette addresse mail: </string>
+    <string name="infos_string3">anakinmrq@gmail.com</string>
+
+</resources>
