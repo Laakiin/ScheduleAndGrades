@@ -5,6 +5,9 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.FileUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -28,6 +31,33 @@ import java.util.stream.Collectors;
 
 public class Settings extends AppCompatActivity {
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_schedule:
+                Intent scheduleIntent = new Intent(this, Schedule.class);
+                Settings.this.startActivity(scheduleIntent);
+                return true;
+            case R.id.menu_grades:
+                Intent gradesIntent = new Intent(this, Grades.class);
+                Settings.this.startActivity(gradesIntent);
+                return true;
+            case R.id.menu_settings:
+                return true;
+            case R.id.menu_infos:
+                Intent infosIntent = new Intent(this, Infos.class);
+                Settings.this.startActivity(infosIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     public String fName;
 

@@ -1,7 +1,11 @@
 package com.anakinmrq.scheduleandgradesiutb;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -17,6 +21,33 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Grades extends AppCompatActivity {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_schedule:
+                Intent scheduleIntent = new Intent(this, Schedule.class);
+                Grades.this.startActivity(scheduleIntent);
+                return true;
+            case R.id.menu_grades:
+                return true;
+            case R.id.menu_settings:
+                Intent settingsIntent = new Intent(this, Settings.class);
+                Grades.this.startActivity(settingsIntent);
+                return true;
+            case R.id.menu_infos:
+                Intent infosIntent = new Intent(this, Infos.class);
+                Grades.this.startActivity(infosIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     public String numEtu;
     public boolean b;
 
@@ -62,7 +93,10 @@ public class Grades extends AppCompatActivity {
                     b = false;
                 }
                 if (b == true) {
-                    Log.d("mrq-webview","phptry");
+                    String newUA= "Mozilla/5.0 (X11; Linux x86_64; rv:94.0) Gecko/20100101 Firefox/94.0";
+                    myWebView.getSettings().setUserAgentString(newUA);
+                    myWebView.getSettings().setBuiltInZoomControls(true);
+                    myWebView.getSettings().setSupportZoom(true);
                     myWebView.getSettings().setJavaScriptEnabled(true);
                     myWebView.loadUrl("javascript:document.getElementsByTagName('input')[0].value = " + numEtu);
                     myWebView.loadUrl("javascript:document.getElementsByTagName('input')[1].click()");

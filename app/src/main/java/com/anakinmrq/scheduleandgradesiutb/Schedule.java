@@ -1,7 +1,11 @@
 package com.anakinmrq.scheduleandgradesiutb;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.webkit.WebView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +17,33 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Schedule extends AppCompatActivity {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_schedule:
+                return true;
+            case R.id.menu_grades:
+                Intent gradesIntent = new Intent(this, Grades.class);
+                Schedule.this.startActivity(gradesIntent);
+                return true;
+            case R.id.menu_settings:
+                Intent settingsIntent = new Intent(this, Settings.class);
+                Schedule.this.startActivity(settingsIntent);
+                return true;
+            case R.id.menu_infos:
+                Intent infosIntent = new Intent(this, Infos.class);
+                Schedule.this.startActivity(infosIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     public String readLine(int line, String fName){
         FileReader tempFileReader = null;
@@ -35,7 +66,8 @@ public class Schedule extends AppCompatActivity {
         WebView myWebView = (WebView) findViewById(R.id.webview);
 
 
-
+        myWebView.getSettings().setBuiltInZoomControls(true);
+        myWebView.getSettings().setSupportZoom(true);
         myWebView.getSettings().setJavaScriptEnabled(true);
         String URL =  readLine(0,"url.txt");
         myWebView.loadUrl(URL);
