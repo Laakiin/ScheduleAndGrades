@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EDT et Notes</string>
+    <string name="save">Sauvegarder</string>
+    <string name="exit">Quiiter</string>
+    <string name="NumEtu">Numéro Étudiant</string>
+    <string name="URL">Lien de l\'EDT</string>
+    <string name="grades">Notes</string>
+    <string name="schedule">Emploi du Temps</string>
+    <string name="settings">Paramêtres</string>
+    <string name="infos">Infos</string>
+    <string name="infos_string1">Application créée par Anakin MARQUES et FONT Vincent</string>
+    <string name="infos_string2">"Pour rapporter des bugs, le faire à cette adresse mail: "</string>
+    <string name="home">Accueil</string>
+    <string name="incNum">Numéro Étudiant incorrect</string>
+    <string name="incURL">Lien de l\'emploi du temps incorrect</string>
+
+    <string name="profilecreate">Créer un profil</string>
+    <string name="prenomcreate">Prénom</string>
+    <string name="nomcreate">Nom</string>
+    <string name="numetucreate">Numéro Etudiant</string>
+    <string name="btnprofilecreate">Créer</string>
+
+    <string name="selectprofile">Choisir un Profil</string>
+    <string name="noprofile">Pas de profil sélectionné</string>
+
+</resources>

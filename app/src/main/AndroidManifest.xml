@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.anakinmrq.scheduleandgradesiutb">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/my_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ScheduleAndGrades">
+        <activity
+            android:name=".activities.SelectProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.NewProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.iutbSite"
+            android:label="Site IUTB" />
+        <activity
+            android:name=".activities.Settings"
+            android:label="@string/settings" />
+        <activity
+            android:name=".activities.Infos"
+            android:label="@string/infos" />
+        <activity
+            android:name=".activities.Schedule"
+            android:label="@string/schedule" />
+        <activity
+            android:name=".activities.Grades"
+            android:label="@string/grades" />
+    </application>
+
+</manifest>
