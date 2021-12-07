@@ -79,9 +79,9 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.settings);
         activity=this;
     }
-    static public Activity activity;
-
-    public static void CloseApp(){
+    static Activity activity;
+    public void CloseApp(){
+        activity=this;
         activity.finish();
     }
 

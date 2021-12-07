@@ -1,6 +1,5 @@
 package com.anakinmrq.scheduleandgradesiutb;
 
-import static com.anakinmrq.scheduleandgradesiutb.Settings.CloseApp;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,6 +17,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class Infos extends AppCompatActivity {
+    static Activity activity;
+    public void CloseApp(){
+        activity=this;
+        activity.finish();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -57,7 +61,4 @@ public class Infos extends AppCompatActivity {
         activity=this;
     }
 
-
-
-    static public Activity activity;
 }

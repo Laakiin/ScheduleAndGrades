@@ -1,8 +1,8 @@
 package com.anakinmrq.scheduleandgradesiutb;
 
-import static com.anakinmrq.scheduleandgradesiutb.Settings.CloseApp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +21,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Schedule extends AppCompatActivity {
+    static Activity activity;
+    public void CloseApp(){
+        activity=this;
+        activity.finish();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -78,10 +84,18 @@ public class Schedule extends AppCompatActivity {
         myWebView.getSettings().setDisplayZoomControls(false);
         myWebView.getSettings().setJavaScriptEnabled(true);
         String URL =  readLine(0,"url.txt");
-        myWebView.loadUrl(URL);
+        if(URL.isEmpty()){
+            Context context=getApplicationContext();
+            int duration= Toast.LENGTH_SHORT;
+            Toast t= Toast.makeText(context,R.string.incURL,duration);
+            t.show();
+            CloseApp();
+        }
+        else{
+            myWebView.loadUrl(URL);
+        }
 
 
         activity=this;
     }
-    static public Activity activity;
 }

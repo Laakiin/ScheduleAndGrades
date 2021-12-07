@@ -13,5 +13,7 @@
     <string name="infos_string2">If you want to report any bug, do it to this email address:</string>
     <string name="iutb_link" translatable="false">www.iutbeziers.fr</string>
     <string name="home">Home</string>
+    <string name="incNum">Incorrect student ID</string>
+    <string name="incURL">Incorrect schedule URL</string>
 
 </resources>

@@ -1,8 +1,8 @@
 package com.anakinmrq.scheduleandgradesiutb;
 
-import static com.anakinmrq.scheduleandgradesiutb.Settings.CloseApp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,12 +25,17 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Grades extends AppCompatActivity {
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return true;
+    static Activity activity;
+    public void CloseApp(){
+        activity=this;
+        activity.finish();
     }
+    @Override
+        public boolean onCreateOptionsMenu(Menu menu) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.main, menu);
+            return true;
+        }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -91,31 +97,42 @@ public class Grades extends AppCompatActivity {
 
         numEtu = readLine(0, "numetu.txt");
 
-        b = true;
-        myWebView.loadUrl("https://www.iutbeziers.fr/scodoc/index.php");
-        myWebView.setWebViewClient(new WebViewClient() {
-            public void onPageFinished(WebView view, String url) {
+        if (numEtu.length() == 8){
+            b = true;
+            myWebView.loadUrl("https://www.iutbeziers.fr/scodoc/index.php");
+            myWebView.setWebViewClient(new WebViewClient() {
+                public void onPageFinished(WebView view, String url) {
 
-                try {
-                    int f = Integer.parseInt(numEtu);
-                } catch (NumberFormatException e) {
-                    b = false;
+                    try {
+                        int f = Integer.parseInt(numEtu);
+                    } catch (NumberFormatException e) {
+                        Context context=getApplicationContext();
+                        int duration= Toast.LENGTH_SHORT;
+                        Toast t= Toast.makeText(context,R.string.incNum,duration);
+                        t.show();
+                        CloseApp();
+                        b = false;
+                    }
+                    if (b == true) {
+                        myWebView.getSettings().setBuiltInZoomControls(true);
+                        myWebView.getSettings().setSupportZoom(true);
+                        myWebView.getSettings().setDisplayZoomControls(false);
+                        myWebView.getSettings().setJavaScriptEnabled(true);
+
+                        myWebView.loadUrl("javascript:document.getElementsByTagName('input')[0].value = " + numEtu);
+                        myWebView.loadUrl("javascript:document.getElementsByTagName('input')[1].click()");
+                    }
+
                 }
-                if (b == true) {
-                    myWebView.getSettings().setBuiltInZoomControls(true);
-                    myWebView.getSettings().setSupportZoom(true);
-                    myWebView.getSettings().setDisplayZoomControls(false);
-                    myWebView.getSettings().setJavaScriptEnabled(true);
-
-                    myWebView.loadUrl("javascript:document.getElementsByTagName('input')[0].value = " + numEtu);
-                    myWebView.loadUrl("javascript:document.getElementsByTagName('input')[1].click()");
-                }
-
-            }
-        });
-
-
-        activity=this;
+            });
+            activity = this;
+        }
+        else{
+            Context context=getApplicationContext();
+            int duration= Toast.LENGTH_SHORT;
+            Toast t= Toast.makeText(context,R.string.incNum,duration);
+            t.show();
+            CloseApp();
+        }
     }
-    static public Activity activity;
 }
