@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="15dp"
-    tools:context=".activities.Infos">
+    tools:context=".activities.InfosActivity">
 
     <TextView
         android:id="@+id/textView3"

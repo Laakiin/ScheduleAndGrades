@@ -27,19 +27,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.iutbSite"
-            android:label="Site IUTB" />
-        <activity
-            android:name=".activities.Settings"
+            android:name=".activities.SettingsActivity"
             android:label="@string/settings" />
         <activity
-            android:name=".activities.Infos"
+            android:name=".activities.InfosActivity"
             android:label="@string/infos" />
         <activity
-            android:name=".activities.Schedule"
+            android:name=".activities.ScheduleActivity"
             android:label="@string/schedule" />
         <activity
-            android:name=".activities.Grades"
+            android:name=".activities.GradesActivity"
             android:label="@string/grades" />
     </application>
 

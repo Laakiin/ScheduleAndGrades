@@ -24,4 +24,7 @@
     <string name="selectprofile">Choisir un Profil</string>
     <string name="noprofile">Pas de profil sélectionné</string>
 
+    <string name="settingssave">Paramètres Sauvegardés !</string>
+    <string name="urlnoregistered">URL de l\'EDT non enregistré</string>
+
 </resources>

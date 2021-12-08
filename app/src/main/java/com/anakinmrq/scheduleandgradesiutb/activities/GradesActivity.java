@@ -15,13 +15,10 @@ import com.anakinmrq.scheduleandgradesiutb.R;
 import com.anakinmrq.scheduleandgradesiutb.managers.GradesManager;
 import com.anakinmrq.scheduleandgradesiutb.managers.ProfilesManager;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+public class GradesActivity extends AppCompatActivity {
 
-public class Grades extends AppCompatActivity {
-
-    private static Grades instance;
-    public static Grades getInstance(){return instance;}
+    private static GradesActivity instance;
+    public static GradesActivity getInstance(){return instance;}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,29 +31,29 @@ public class Grades extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_schedule:
-                Intent scheduleIntent = new Intent(this, Schedule.class);
-                Grades.this.startActivity(scheduleIntent);
-                this.finish();
+                Intent scheduleIntent = new Intent(this, ScheduleActivity.class);
+                GradesActivity.this.startActivity(scheduleIntent);
+                finishAndRemoveTask();
                 return true;
             case R.id.menu_grades:
                 return true;
             case R.id.menu_settings:
-                Intent settingsIntent = new Intent(this, Settings.class);
-                Grades.this.startActivity(settingsIntent);
-                this.finish();
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                GradesActivity.this.startActivity(settingsIntent);
+                finishAndRemoveTask();
                 return true;
             case R.id.menu_infos:
-                Intent infosIntent = new Intent(this, Infos.class);
-                Grades.this.startActivity(infosIntent);
-                this.finish();
+                Intent infosIntent = new Intent(this, InfosActivity.class);
+                GradesActivity.this.startActivity(infosIntent);
+                finishAndRemoveTask();
                 return true;
             case R.id.menu_home:
-                this.finish();
+                finishAndRemoveTask();
                 return true;
             case R.id.selectprofile:
                 Intent profileIT = new Intent(this, SelectProfileActivity.class);
                 startActivity(profileIT);
-                this.finish();
+                finishAndRemoveTask();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -67,12 +64,12 @@ public class Grades extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         instance = this;
-        setContentView(R.layout.grades);
+        setContentView(R.layout.grades_activity);
 
         String numetu = ProfilesManager.getCurrentProfile().getNumetu();
         if (numetu == null) {
             Toast.makeText(getApplicationContext(), R.string.noprofile, Toast.LENGTH_SHORT).show();
-            this.finish();
+            finishAndRemoveTask();
             return;
         }
 
@@ -85,7 +82,7 @@ public class Grades extends AppCompatActivity {
             @Override
             public void run() {
                 final String html = GradesManager.connect(numetu);
-                Grades.getInstance().runOnUiThread(new Runnable() {
+                GradesActivity.getInstance().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         wbview.loadDataWithBaseURL("https://www.iutbeziers.fr/scodoc/", html, "text/html", "utf-8", null);

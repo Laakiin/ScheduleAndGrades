@@ -1,6 +1,5 @@
 package com.anakinmrq.scheduleandgradesiutb.activities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,16 +14,18 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.anakinmrq.scheduleandgradesiutb.R;
+import com.anakinmrq.scheduleandgradesiutb.managers.FilesManager;
+import com.anakinmrq.scheduleandgradesiutb.objects.Settings;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.PrintStream;
 
 
-public class Settings extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
-    private static Settings instance;
-    public static Settings getInstance() {return instance;}
+    private static SettingsActivity instance;
+    public static SettingsActivity getInstance() {return instance;}
 
     public String fName;
 
@@ -38,20 +39,20 @@ public class Settings extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_schedule:
-                Intent scheduleIntent = new Intent(this, Schedule.class);
-                Settings.this.startActivity(scheduleIntent);
+                Intent scheduleIntent = new Intent(this, ScheduleActivity.class);
+                SettingsActivity.this.startActivity(scheduleIntent);
                 finishAndRemoveTask();
                 return true;
             case R.id.menu_grades:
-                Intent gradesIntent = new Intent(this, Grades.class);
-                Settings.this.startActivity(gradesIntent);
+                Intent gradesIntent = new Intent(this, GradesActivity.class);
+                SettingsActivity.this.startActivity(gradesIntent);
                 finishAndRemoveTask();
                 return true;
             case R.id.menu_settings:
                 return true;
             case R.id.menu_infos:
-                Intent infosIntent = new Intent(this, Infos.class);
-                Settings.this.startActivity(infosIntent);
+                Intent infosIntent = new Intent(this, InfosActivity.class);
+                SettingsActivity.this.startActivity(infosIntent);
                 finishAndRemoveTask();
                 return true;
             case R.id.menu_home:
@@ -71,39 +72,15 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         instance=this;
-        setContentView(R.layout.settings);
+        setContentView(R.layout.settings_activity);
 
     }
 
     public void displayURL(View v){
-        String URL = readLine(0,"url.txt");
-
-        Context context=getApplicationContext();
-        int duration=Toast.LENGTH_SHORT;
-        Toast t= Toast.makeText(context,URL,duration);
-        t.show();
+        Settings settings = FilesManager.getSettings();
+        String URL = (settings.getEDT_URL() == null ? getResources().getString(R.string.urlnoregistered) : settings.getEDT_URL());
+        Toast.makeText(getApplicationContext(), URL, Toast.LENGTH_SHORT).show();
     }
-
-    public String readLine(int line, String fName) {
-        FileReader tempFileReader = null;
-        BufferedReader tempBufferedReader = null;
-        try {
-            tempFileReader = new FileReader(getFilesDir().getAbsolutePath() + "/" + fName);
-            tempBufferedReader = new BufferedReader(tempFileReader);
-        } catch (Exception e) {}
-        String returnStr = "ERROR";
-        for (int i = 0; i < line - 1; i++) {
-            try {
-                tempBufferedReader.readLine();
-            } catch (Exception e) {}
-        }
-        try {
-            returnStr = tempBufferedReader.readLine();
-        } catch (Exception e) {}
-
-        return returnStr;
-    }
-
 
     public void newProfile(View v){
         Intent it = new Intent(this, NewProfileActivity.class);
@@ -111,17 +88,15 @@ public class Settings extends AppCompatActivity {
         finish();
     }
 
+    public void saveInfo(View v){
+        EditText etURL=(EditText) findViewById(R.id.URL);
+        String URL=etURL.getText().toString();
+        Settings settings = FilesManager.getSettings();
+        settings.setEDT_URL(URL);
+        FilesManager.setSettings(settings);
+        FilesManager.saveSettings();
 
-    public void createUrlFile(String URL) {
-        try {
-            fName = getFilesDir().getAbsolutePath() + "/url.txt";
-            PrintStream ps = new PrintStream(fName);
-            ps.println(URL);
-            ps.close();
-            Log.d("mrq-file", "URL File " + fName + " created.");
-        } catch (Exception e) {
-            Log.e("mrq-file", e.toString());
-        }
+        Toast.makeText(getApplicationContext(), getResources().getString(R.string.settingssave), Toast.LENGTH_SHORT).show();
     }
 
 }

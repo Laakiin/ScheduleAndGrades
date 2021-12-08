@@ -3,6 +3,7 @@ package com.anakinmrq.scheduleandgradesiutb.managers;
 import android.util.Log;
 
 import com.anakinmrq.scheduleandgradesiutb.objects.Profile;
+import com.anakinmrq.scheduleandgradesiutb.objects.Settings;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -13,6 +14,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.security.Key;
 import java.util.ArrayList;
+import java.util.Set;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -21,23 +23,36 @@ public class FilesManager {
 
     private static final String filextent = ".hh0w";
     private static final String profiles_file = "/profiles"+filextent;
+    private static final String settings_file = "/settings"+filextent;
 
     private static final String x = "3O98YDN7Y937Y937@@3#32DBXH789Y3D";
     private static final String algo = "AES";
 
     private static ArrayList<Profile> profiles = new ArrayList<>();
+    private static Settings settings = new Settings(null);
 
     private static File fprofiles;
+    private static File fsettings;
 
     /* GETTERS */
     public static ArrayList<Profile> getProfiles(){
         return profiles;
     }
+    public static Settings getSettings(){ return settings; }
 
     /* SETTERS */
     public static void addProfile(Profile pr){
         if(profileExists(pr)) return;
         profiles.add(pr);
+    }
+
+    public static void removeProfile(Profile pr){
+        while(profiles.contains(pr))
+            profiles.remove(pr);
+    }
+
+    public static void setSettings(Settings settings){
+        FilesManager.settings = settings;
     }
 
     /* Main Function */
@@ -46,11 +61,17 @@ public class FilesManager {
         String dirpath = base.getAbsolutePath();
 
         fprofiles = new File(dirpath+profiles_file);
+        fsettings = new File(dirpath+settings_file);
 
         Object objprofiles = getFile(fprofiles);
         if(objprofiles != null){
             FilesManager.profiles.clear();
             FilesManager.profiles = (ArrayList<Profile>) objprofiles;
+        }
+
+        Object objsettings = getFile(fsettings);
+        if(objsettings != null){
+            settings = (Settings) objsettings;
         }
 
     }
@@ -65,6 +86,7 @@ public class FilesManager {
         return false;
     }
 
+    public static void saveSettings(){ saveFile(fsettings, settings); }
     public static void saveProfiles(){
         saveFile(fprofiles, profiles);
     }

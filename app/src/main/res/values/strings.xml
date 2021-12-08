@@ -25,4 +25,7 @@
     <string name="selectprofile">Select Profile</string>
     <string name="noprofile">No Profile Selected</string>
 
+    <string name="settingssave">Settings Saved !</string>
+    <string name="urlnoregistered">URL of EDT not registered</string>
+
 </resources>

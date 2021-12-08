@@ -9,4 +9,11 @@ public class VarUtils {
         return true;
     }
 
+    public static String getNomPrenom(String listline){
+        String ret = "";
+
+        String[] tab = listline.split("       ");
+        return tab[0];
+    }
+
 }

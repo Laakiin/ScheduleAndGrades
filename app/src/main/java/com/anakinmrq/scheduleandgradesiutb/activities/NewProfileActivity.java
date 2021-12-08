@@ -43,6 +43,7 @@ public class NewProfileActivity extends AppCompatActivity {
         }
 
         Profile profile = new Profile(nom, prenom, numetu);
+
         FilesManager.addProfile(profile);
         FilesManager.saveProfiles();
         Toast.makeText(getApplicationContext(), "Profile Created !", Toast.LENGTH_SHORT).show();

@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
-import com.anakinmrq.scheduleandgradesiutb.activities.Grades;
-import com.anakinmrq.scheduleandgradesiutb.activities.Infos;
-import com.anakinmrq.scheduleandgradesiutb.activities.Schedule;
-import com.anakinmrq.scheduleandgradesiutb.activities.Settings;
-import com.anakinmrq.scheduleandgradesiutb.activities.iutbSite;
+import com.anakinmrq.scheduleandgradesiutb.activities.GradesActivity;
+import com.anakinmrq.scheduleandgradesiutb.activities.InfosActivity;
+import com.anakinmrq.scheduleandgradesiutb.activities.ScheduleActivity;
+import com.anakinmrq.scheduleandgradesiutb.activities.SettingsActivity;
 import com.anakinmrq.scheduleandgradesiutb.managers.FilesManager;
+import com.anakinmrq.scheduleandgradesiutb.managers.ProfilesManager;
 
 import java.io.File;
 
@@ -26,23 +27,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void schedule(View v){
-        Intent scheduleIntent = new Intent(this, Schedule.class);
+        Intent scheduleIntent = new Intent(this, ScheduleActivity.class);
         this.startActivity(scheduleIntent);
     }
     public void settings(View v){
-        Intent scheduleIntent = new Intent(this, Settings.class);
+        Intent scheduleIntent = new Intent(this, SettingsActivity.class);
         this.startActivity(scheduleIntent);
     }
     public void infos(View v){
-        Intent scheduleIntent = new Intent(this, Infos.class);
+        Intent scheduleIntent = new Intent(this, InfosActivity.class);
         this.startActivity(scheduleIntent);
     }
     public void grades(View v){
-        Intent scheduleIntent = new Intent(this, Grades.class);
-        this.startActivity(scheduleIntent);
-    }
-    public void siteIUTB(View v){
-        Intent scheduleIntent = new Intent(this, iutbSite.class);
+        if(ProfilesManager.getCurrentProfile() == null){
+            Toast.makeText(getApplicationContext(), "Aucun profil sélectionné", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Intent scheduleIntent = new Intent(this, GradesActivity.class);
         this.startActivity(scheduleIntent);
     }
 
