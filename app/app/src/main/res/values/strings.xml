@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Schedule And Grades</string>
+    <string name="save">Save</string>
+    <string name="exit">Exit</string>
+    <string name="NumEtu">Student ID</string>
+    <string name="URL">Schedule URL</string>
+    <string name="grades">Grades</string>
+    <string name="schedule">Schedule</string>
+    <string name="settings">Settings</string>
+    <string name="infos">Infos</string>
+    <string name="infos_string1">App created by Anakin MARQUES and FONT Vincent</string>
+    <string name="infos_string3" translatable="false">anakinmrq@gmail.com</string>
+    <string name="infos_string2">If you want to report any bug, do it to this email address:</string>
+    <string name="iutb_link" translatable="false">www.iutbeziers.fr</string>
+    <string name="home">Home</string>
+    <string name="incNum">Incorrect student ID</string>
+    <string name="incURL">Incorrect schedule URL</string>
+
+    <string name="profilecreate">Create New Profile</string>
+    <string name="prenomcreate">First Name</string>
+    <string name="nomcreate">Last Name</string>
+    <string name="numetucreate">Student Number</string>
+    <string name="btnprofilecreate">Create</string>
+
+    <string name="selectprofile">Select Profile</string>
+    <string name="noprofile">No Profile Selected</string>
+
+    <string name="settingssave">Settings Saved !</string>
+    <string name="urlnoregistered">URL of EDT not registered</string>
+
+</resources>
