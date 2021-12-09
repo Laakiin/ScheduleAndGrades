@@ -12,6 +12,10 @@
         android:title="@string/infos"
         app:showAsAction="never" />
     <item
+        android:id="@+id/selectprofile"
+        android:orderInCategory="3"
+        android:title="@string/selectprofile" />
+    <item
         android:id="@+id/menu_home"
         android:title="@string/home"
         android:orderInCategory="3"

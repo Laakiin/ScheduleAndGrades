@@ -9,9 +9,22 @@
     <string name="schedule">Emploi du Temps</string>
     <string name="settings">Paramêtres</string>
     <string name="infos">Infos</string>
-    <string name="infos_string1">Application créée par Anakin MARQUES</string>
+    <string name="infos_string1">Application créée par Anakin MARQUES et FONT Vincent</string>
     <string name="infos_string2">"Pour rapporter des bugs, le faire à cette adresse mail: "</string>
     <string name="home">Accueil</string>
     <string name="incNum">Numéro Étudiant incorrect</string>
     <string name="incURL">Lien de l\'emploi du temps incorrect</string>
+
+    <string name="profilecreate">Créer un profil</string>
+    <string name="prenomcreate">Prénom</string>
+    <string name="nomcreate">Nom</string>
+    <string name="numetucreate">Numéro Etudiant</string>
+    <string name="btnprofilecreate">Créer</string>
+
+    <string name="selectprofile">Choisir un Profil</string>
+    <string name="noprofile">Pas de profil sélectionné</string>
+
+    <string name="settingssave">Paramètres Sauvegardés !</string>
+    <string name="urlnoregistered">URL de l\'EDT non enregistré</string>
+
 </resources>

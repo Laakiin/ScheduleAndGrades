@@ -3,6 +3,7 @@
     package="com.anakinmrq.scheduleandgradesiutb">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/my_icon"
@@ -10,6 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ScheduleAndGrades">
+        <activity
+            android:name=".activities.SelectProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.NewProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -19,12 +26,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:label="Site IUTB" android:name="iutbSite"/>
-        <activity android:label="@string/settings" android:name="Settings"/>
-        <activity android:label="@string/infos" android:name="Infos"/>
-        <activity android:label="@string/schedule" android:name="Schedule"/>
-        <activity android:label="@string/grades" android:name="Grades"/>
-
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/settings" />
+        <activity
+            android:name=".activities.InfosActivity"
+            android:label="@string/infos" />
+        <activity
+            android:name=".activities.ScheduleActivity"
+            android:label="@string/schedule" />
+        <activity
+            android:name=".activities.GradesActivity"
+            android:label="@string/grades" />
     </application>
 
 </manifest>
